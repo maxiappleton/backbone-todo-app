@@ -1,0 +1,23 @@
+{{#each masterLists}}
+<div class="nav-list {{completedClass}}">
+  <a href="#" class="nav-todo-list">
+    <h2>
+      {{{returnCorrectImgTag}}}
+      <span class="nav-header list-title" data-listtype="{{listInfo.type}}">{{listInfo.title}}</span>
+      <span class="todo-number">{{listLength}}</span>
+    </h2>
+  </a>
+  <ul>
+  {{#each subLists}}
+    <li>
+      <a href="#" class="nav-todo-list">
+        <div class="nav-item-content">
+          <span class="date list-title" data-listtype="{{listInfo.type}}">{{listInfo.title}}</span>
+          <span class="todo-number">{{listLength}}</span>
+        </div>
+      </a>
+    </li>
+  {{/each}}
+  </ul>
+</div>
+{{/each}}
