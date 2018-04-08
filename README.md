@@ -1,6 +1,6 @@
 # Backbone Todo App
 
-Simple Backbone application using JSON Server for the back-end (https://github.com/typicode/json-server).
+Todo management application built using Backbone.js, Express, Handlebars and jQuery, using JSON Server for the back-end (https://github.com/typicode/json-server).
 
 ## Getting Started
 
