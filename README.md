@@ -1,6 +1,6 @@
 # Backbone Todo App
 
-Todo management application built using Backbone.js, Express, Handlebars and jQuery, using JSON Server for the back-end (https://github.com/typicode/json-server).
+Todo management application built using Express and MongoDB on the back-end and Backbone.js, Handlebars and jQuery on the front-end.
 
 ## Getting Started
 
@@ -8,3 +8,7 @@ Todo management application built using Backbone.js, Express, Handlebars and jQu
 2. `npm install` to download necessary packages
 3. `npm start` to start up server
 4. Navigate to `http://localhost:3000` in your browser
+
+## Demonstration
+
+
