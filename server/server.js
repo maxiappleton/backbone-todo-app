@@ -32,9 +32,4 @@ app.delete('/todos/:todoID', (req, res) => {
   Todo.findOneAndRemove({ _id: req.params.todoID }).then(todo => res.json(todo));
 });
 
-
-
-
-
-
 app.listen(process.env.PORT || 3000);
