@@ -1,8 +1,8 @@
 var AllTodoItems = Backbone.Collection.extend({
   model: TodoItem,
-  url: 'http://localhost:3000/todoitems',
+  url: `${window.location.protocol}//${window.location.host}/todos`,
 
-  createList: function(title, type, models) {
+  createList: function (title, type, models) {
     var newList = {
       listInfo: {
         title: title,
@@ -15,7 +15,7 @@ var AllTodoItems = Backbone.Collection.extend({
     return newList;
   },
 
-  generateTodoLists: function() {
+  generateTodoLists: function () {
     this.allTodoLists = [];
 
     var newMasterLists = this.generateMasterLists();
@@ -25,26 +25,26 @@ var AllTodoItems = Backbone.Collection.extend({
     this.todoLists = { masterLists: newMasterLists };
   },
 
-  generateMasterLists: function() {
+  generateMasterLists: function () {
     var allTodosList = this.createList('All Todos', 'all', this.models);
     var allCompletedTodosList = this.createList('Completed', 'completed', this.filter(model => model.get('completed')));
 
     return [allTodosList, allCompletedTodosList];
   },
 
-  generateSubLists: function(list) {
-   var groupedByDate = _(list.todoItems).groupBy(model => model.get('formattedDate'));
-   
-   var subLists = [];
-   for (date in groupedByDate) {
-    var newSubList = this.createList(date, list.listInfo.type, groupedByDate[date]);
-    subLists.push(newSubList);
-   }
+  generateSubLists: function (list) {
+    var groupedByDate = _(list.todoItems).groupBy(model => model.get('formattedDate'));
 
-   return this.sortByDate(subLists);
+    var subLists = [];
+    for (date in groupedByDate) {
+      var newSubList = this.createList(date, list.listInfo.type, groupedByDate[date]);
+      subLists.push(newSubList);
+    }
+
+    return this.sortByDate(subLists);
   },
 
-  sortByDate: function(subListsArray) {
+  sortByDate: function (subListsArray) {
     return _(subListsArray).chain().sortBy(obj => {
       // Sort by month
       return obj.listInfo.title.split("/")[0];
@@ -54,19 +54,19 @@ var AllTodoItems = Backbone.Collection.extend({
     }).value();
   },
 
-  getList: function(listInfo) {
+  getList: function (listInfo) {
     return _(this.allTodoLists).find(list => {
       return list.listInfo.title === listInfo.title && list.listInfo.type === listInfo.type
     });
   },
 
-  listUpdate: function() {
+  listUpdate: function () {
     this.generateTodoLists();
     this.trigger('dataUpdated');
   },
 
-  initialize: function() {
-    this.fetch();
+  initialize: function () {
+    this.fetch({ success: this.listUpdate.bind(this) });
     this.on('update change', this.listUpdate);
   }
 });

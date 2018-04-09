@@ -5,26 +5,30 @@
 <ul class="todo-list">
   <li class="todo-row add-todo-item">
     <a href="#">
-      <img src="images/add-list-icon.png" alt="Add New Todo Icon"><!--
-      --><span>Add new todo</span>
+      <img src="images/add-list-icon.png" alt="Add New Todo Icon">
+      <!--
+      -->
+      <span>Add new todo</span>
     </a>
   </li>
   {{#each todoItems}}
-    <li class="todo-row" data-id="{{id}}">
+  <li class="todo-row" data-id="{{_id}}">
 
-      {{#if completed}}
-      <div class="list-item completed">
+    {{#if completed}}
+    <div class="list-item completed">
       {{else}}
       <div class="list-item">
-      {{/if}}
+        {{/if}}
         <span class="checkbox"></span>
         <a href="#" class="todo-title">{{title}} - {{formattedDate}}</a>
       </div>
 
       <div class="delete-icon">
-        <a href="#"><img src="images/trash-icon.png" alt="Trash Can Icon"></a>
+        <a href="#">
+          <img src="images/trash-icon.png" alt="Trash Can Icon">
+        </a>
       </div>
 
-    </li>
+  </li>
   {{/each}}
 </ul>

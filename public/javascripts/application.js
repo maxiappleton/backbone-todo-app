@@ -1,10 +1,10 @@
 // HANDLEBARS HELPERS
 
-Handlebars.registerHelper('listLength', function() {
+Handlebars.registerHelper('listLength', function () {
   return this.todoItems.length;
 });
 
-Handlebars.registerHelper('returnCorrectImgTag', function() {
+Handlebars.registerHelper('returnCorrectImgTag', function () {
   if (this.listInfo.title === 'All Todos') {
     return '<img src="images/list-icon.png" alt="List Icon">';
   } else if (this.listInfo.title === 'Completed') {
@@ -12,7 +12,7 @@ Handlebars.registerHelper('returnCorrectImgTag', function() {
   }
 });
 
-Handlebars.registerHelper('completedClass', function() {
+Handlebars.registerHelper('completedClass', function () {
   if (this.listInfo.title === 'Completed') { return 'completed-todos'; }
 });
 
@@ -22,20 +22,21 @@ App = {
   templates: JST,
   MONTHS: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
-  createCollection: function() {
+  createCollection: function () {
     this.allTodoItems = new AllTodoItems();
   },
 
-  createInitialViews: function() {
+  createInitialViews: function () {
+    // console.log(this.allTodoItems);
     this.navView = new NavView({ collection: this.allTodoItems });
     this.todoListView = new TodoListView({ collection: this.allTodoItems });
   },
 
-  displayModal: function(model) {
+  displayModal: function (model) {
     new ModalView({ model: model });
   },
 
-  init: function() {
+  init: function () {
     this.createCollection();
     this.createInitialViews();
   },

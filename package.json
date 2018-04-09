@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "json-server db.json --watch"
+    "start": "node server/server.js"
   },
   "author": "Max Appleton",
   "license": "ISC",
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-handlebars": "^1.0.0",
-    "json-server": "^0.12.1"
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.0.5",
+    "mongoose": "^5.0.14"
   }
 }
